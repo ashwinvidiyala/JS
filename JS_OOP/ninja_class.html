@@ -25,12 +25,41 @@
         this.drinkSake = function() {
           this.health+= 10;
         }
+
+        this.punch = function(ninja) {
+          if (ninja instanceof Ninja) {
+            ninja.health -= 5;
+            console.log(`${ninja.name} was punched by ${this.name} and lost 5
+                        health.`);
+            return this;
+          } else {
+            return 'Incorrect parameter given.'
+          }
+        }
+
+        this.kick = function(ninja) {
+          if (ninja instanceof Ninja) {
+            let health_lost = strength * 15;
+            ninja.health -= health_lost;
+            console.log(`${ninja.name} was kicked by ${this.name} and lost ${health_lost}
+                        health.`);
+          } else {
+            return 'Incorrect parameter given.'
+          }
+        }
       }
 
       const ninja1 = new Ninja("Hyabusa");
       ninja1.sayName();
+      ninja1.drinkSake();
 
       ninja1.showStats();
+
+      const blueNinja = new Ninja("Goemon");
+      const redNinja = new Ninja("Bill Gates");
+      redNinja.punch(blueNinja);
+      blueNinja.kick(redNinja);
+      console.log(blueNinja.kick('chocolate'));
 
     </script>
   </body>
