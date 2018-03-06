@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function Ninja(name) {
+        this.name = name;
+        this.health = 100;
+        let speed = 3;
+        let strength = 3;
+
+        this.sayName = function() {
+          console.log(`My name is ${this.name}`);
+        }
+
+        this.showStats = function() {
+          console.log(`Speed: ${speed}`);
+          console.log(`Strength: ${strength}`);
+          console.log(`Health: ${this.health}`);
+        }
+
+        this.drinkSake = function() {
+          this.health+= 10;
+        }
+      }
+
+      const ninja1 = new Ninja("Hyabusa");
+      ninja1.sayName();
+
+      ninja1.showStats();
+
+    </script>
+  </body>
+</html>
