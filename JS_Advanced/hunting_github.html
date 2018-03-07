@@ -11,12 +11,12 @@
     <script>
       $(document).ready(function() {
         $('#git').on('click', function() {
-          // $.get('https://api.github.com/users/ashwinvidiyala', displayName);
-          $.get('http://api.chew.pro/trbmb', displayName);
+          $.get('https://api.github.com/users/ashwinvidiyala', displayName);
+          // $.get('http://api.chew.pro/trbmb', displayName);
         });
 
         function displayName(data) {
-          $('#text').html(data);
+          $('#text').html(data.name);
         }
       });
     </script>
