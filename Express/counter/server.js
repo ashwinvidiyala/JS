@@ -18,6 +18,6 @@ app.get('/', function(req, res) {
   res.render('index', { counter: req.session.counter })
 })
 
-app.listen(8000, function() {
-  console.log('Listening on port 8000');
+app.listen(6789, function() {
+  console.log('Listening on port 6789');
 })
