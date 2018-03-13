@@ -5,7 +5,8 @@ let express     = require('express'),
     session     = require('express-session'),
     body_parser = require('body-parser');
 
-app.use(body_parser.urlencoded({ extended: true }));
+app.use(body_parser.urlencoded({ extended: true })); //For HTML
+// app.use(bodyParser.json()); //For JSON
 app.use(express.static(path.join(__dirname, "static")));
 app.use(session({
     secret: '^P%mUWCwF4hWAhtgUb8BrRqWPuR$%4w^@FSB3j*VfumMEJB8SPpr57%aqRmsEyHGhJKcvgu9#W&5ZvUrCZ*q4c%8^A9RJ49@Mf3X',
