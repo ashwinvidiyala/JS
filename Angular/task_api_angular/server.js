@@ -33,17 +33,17 @@ mongoose.model('Task', TaskSchema);
 
 let Task = mongoose.model('Task');
 
-app.get('/', (req, res) => {
+app.get('/tasks', (req, res) => {
   let tasks = Task.find({}, (err, tasks) => {
     if (err) {
       res.json({message: 'Error', error: err});
     } else {
-      res.json({message: 'Success', data: tasks});
+      res.json({message: 'Success', tasks: tasks});
     }
   })
 })
 
-app.get('/:id', (req, res) => {
+app.get('/tasks/:id', (req, res) => {
   let task = Task.findOne({_id: req.params.id}, (err, task) => {
     if (err) {
       res.json({message: 'Error', error: err});
@@ -88,11 +88,10 @@ app.delete('/:id', (req, res) => {
     if (err) {
       res.json({message: 'Error', error: err});
     } else {
-      res.redirect('/');
+      res.json({message: 'Successfully deleted'});
     }
   })
 })
-
 
 let server = app.listen(6789, () => {
     console.log("listening on port 6789");
