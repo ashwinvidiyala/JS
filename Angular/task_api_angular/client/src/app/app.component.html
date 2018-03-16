@@ -1,7 +1,13 @@
 <h1>Restful Tasks API</h1>
 
-<h2>All the tasks:</h2>
-<p *ngFor='let task of tasks'>{{task.title}} - {{task.description}}</p>
+<button (click) = 'getTasksFromService()'>Get All Tasks</button>
 
-<h2>The third task is:</h2>
-<p>{{tasks[2].title}} - {{tasks[2].description}}</p>
+
+<div *ngIf='tasks'>
+  <h2>All the tasks:</h2>
+  <p *ngFor='let task of tasks'>{{task.title}} - {{task.description}}</p>
+
+  <h2>The third task is:</h2>
+  <p>{{tasks[2].title}} - {{tasks[2].description}}</p>
+
+</div>

@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
   constructor(private _httpService: HttpService) {}
 
   ngOnInit() {
-    this.getTasksFromService();
+    
   }
 
   getTasksFromService() {
@@ -21,5 +21,5 @@ export class AppComponent implements OnInit{
       console.log('Got our tasks!!', data.json());
       this.tasks = data.json().tasks;
     }
-  }
+  })
 }
