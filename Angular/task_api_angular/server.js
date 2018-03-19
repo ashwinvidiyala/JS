@@ -67,14 +67,14 @@ app.post('/tasks', (req, res) => {
   })
 })
 
-app.put('/:id/:title/:description/:completed', (req, res) => {
+app.put('/tasks/:id', (req, res) => {
   let task = Task.findOne({_id: req.params.id}, (err, task) => {
     if (err) {
       res.json({message: 'Error', error: err});
     } else {
-      task.title = req.params.title;
-      task.description = req.params.description;
-      task.completed = req.params.completed;
+      task.title = req.body.title;
+      task.description = req.body.description;
+      task.completed = req.body.completed;
       task.save( (err) => {
         if (err) {
           res.json({message: 'Error', error: err});
@@ -86,7 +86,7 @@ app.put('/:id/:title/:description/:completed', (req, res) => {
   })
 })
 
-app.delete('/:id', (req, res) => {
+app.delete('/tasks/:id', (req, res) => {
   Task.remove({_id: req.params.id}, (err) => {
     if (err) {
       res.json({message: 'Error', error: err});

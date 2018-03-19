@@ -9,7 +9,9 @@ import { HttpService }          from './http.service';
 
 export class AppComponent implements OnInit{
   tasks = [];
+  current_task = {};
   hidden = '';
+  show_edit_form = false;
   newTask = {
     title: '',
     description: ''
@@ -28,19 +30,41 @@ export class AppComponent implements OnInit{
     })
   }
 
-  onSubmit($event) {
+  addTask($event) {
     $event.preventDefault();
     let observable = this._httpService.addTask(this.newTask);
     observable.subscribe();
-    getTasksFromService();
     this.newTask = {
       title: '',
       description: ''
     };
   }
 
-  // toggleHidden() {
-  //   this.hidden == '<div>' ? this.hidden = '<div hidden>' : this.hidden = '<div>';
-  //   // this.hidden = 'hidden'
-  // }
+  editTask($event) {
+    $event.preventDefault();
+    let observable = this._httpService.editTask(this.current_task);
+    observable.subscribe();
+    this.getTasksFromService();
+  }
+
+  showEditForm($event, title, description, _id) {
+    $event.preventDefault();
+    this.current_task = {
+      title: title,
+      description: description,
+      _id: _id
+    }
+    this.show_edit_form = true;
+  }
+
+  deleteTask($event, title, description, _id) {
+    $event.preventDefault();
+    let task = {
+      title: title,
+      descriptin: description,
+      _id: _id
+    }
+    let observable = this._httpService.deleteTask(task);
+    observable.subscribe();
+  }
 }
