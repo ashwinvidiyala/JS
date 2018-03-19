@@ -23,4 +23,8 @@ export class HttpService {
     //   }
     // })
   }
+
+  addTask(newTask) {
+    return this._http.post('/tasks', newTask);
+  }
 }

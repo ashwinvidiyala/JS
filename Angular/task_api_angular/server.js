@@ -53,8 +53,11 @@ app.get('/tasks/:id', (req, res) => {
   })
 })
 
-app.post('/:title', (req, res) => {
-  let task = new Task({title: req.params.title});
+app.post('/tasks', (req, res) => {
+  let task = new Task({
+    title: req.body.title,
+    description: req.body.description
+  });
   task.save((err) => {
     if (err) {
       res.json({message: 'Error', error: err});

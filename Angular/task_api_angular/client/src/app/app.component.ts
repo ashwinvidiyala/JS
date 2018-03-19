@@ -9,17 +9,38 @@ import { HttpService }          from './http.service';
 
 export class AppComponent implements OnInit{
   tasks = [];
+  hidden = '';
+  newTask = {
+    title: '',
+    description: ''
+  };
+
   constructor(private _httpService: HttpService) {}
 
   ngOnInit() {
-    
+    this.getTasksFromService();
   }
 
   getTasksFromService() {
     let observable = this._httpService.getTasks();
     observable.subscribe( (data) => {
-      console.log('Got our tasks!!', data.json());
       this.tasks = data.json().tasks;
-    }
-  })
+    })
+  }
+
+  onSubmit($event) {
+    $event.preventDefault();
+    let observable = this._httpService.addTask(this.newTask);
+    observable.subscribe();
+    getTasksFromService();
+    this.newTask = {
+      title: '',
+      description: ''
+    };
+  }
+
+  // toggleHidden() {
+  //   this.hidden == '<div>' ? this.hidden = '<div hidden>' : this.hidden = '<div>';
+  //   // this.hidden = 'hidden'
+  // }
 }
