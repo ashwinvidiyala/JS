@@ -11,7 +11,7 @@ export class ShintoService {
 
   mineShinto() {
     this.value++;
-    this.updateLedger('Mine', 1, this.value);
+    this.updateLedger('Mined', 1, this.value);
   }
 
   updateLedger(action, amount, value) {

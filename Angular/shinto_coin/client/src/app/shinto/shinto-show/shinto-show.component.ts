@@ -10,6 +10,9 @@ import { ShintoService }     from '../../shinto.service';
 })
 export class ShintoShowComponent implements OnInit {
   ledger: [];
+  transaction: string;
+  details: string;
+
   constructor(
     private _shintoService: ShintoService,
     private _route: ActivatedRoute
@@ -19,12 +22,18 @@ export class ShintoShowComponent implements OnInit {
     this.ledger = this._shintoService.ledger;
     let observable =this._route.params;
     observable.subscribe( (params) => {
-      console.log(params['id']);
+      // console.log(params['id']);
+      this.findTransaction(params['id']);
     })
   }
 
-  findTransaction(id, ) {
-    for ()
+  findTransaction(id) {
+    for (let i = 0; i < this.ledger.length; i++) {
+      if ( this.ledger[i].id == id ) {
+        this.transaction = id;
+        this.details = this.ledger[i].action;
+      }
+    }
   }
 
 
