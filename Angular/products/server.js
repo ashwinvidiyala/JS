@@ -72,7 +72,7 @@ app.post('/products', (req, res) => {
 
   product.save( (err) => {
     if (err) {
-      res.status(401).json({message: 'Error', data: err});
+      res.status(401).json(err);
     } else {
       res.json({message: 'Success', data: product});
     }
@@ -82,14 +82,14 @@ app.post('/products', (req, res) => {
 app.put('/products/:id', (req, res) => {
   const product = Product.findOne({_id: req.params.id}, (err, product) => {
     if (err) {
-      res.status(401).json({message: 'Error', data: err});
+      res.status(401).json(err);
     } else {
       product.title = req.body.title;
       product.price = req.body.price;
       product.image = req.body.image;
       product.save( (error) => {
         if (error) {
-          res.status(401).json({message: 'Error', data: err});
+          res.status(401).json(error);
         } else {
           res.json({message: 'Success', data: product});
         }
@@ -101,7 +101,7 @@ app.put('/products/:id', (req, res) => {
 app.delete('/products/:id', (req, res) => {
   Product.remove({_id: req.params.id}, (err) => {
     if (err) {
-      res.status(401).json({message: 'Error', data: err});
+      res.status(401).json(err);
     } else {
       res.json({message: 'Success'})
     }
@@ -111,8 +111,6 @@ app.delete('/products/:id', (req, res) => {
 app.all('*', (req, res, next) => {
   res.sendFile(path.resolve('./client/dist/index.html'));
 })
-
-// Other routes
 
 let server = app.listen(6789, () => {
     console.log("listening on port 6789");
