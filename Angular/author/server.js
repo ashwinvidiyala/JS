@@ -47,6 +47,16 @@ app.get('/authors', (req, res) => {
   })
 })
 
+app.get('/authors/:id', (req, res) => {
+  let author = Author.findOne({_id: req.params.id}, (err, author) => {
+    if (err) {
+      res.status(401).json({message: 'Error', error: err});
+    } else {
+      res.json({message: 'Success', data: author});
+    }
+  })
+})
+
 app.post('/authors', (req, res) => {
   let author = new Author({ name: req.body.name });
 
@@ -59,16 +69,6 @@ app.post('/authors', (req, res) => {
   })
 })
 
-app.get('/authors/:id', (req, res) => {
-  let author = Author.findOne({_id: req.params.id}, (err, author) => {
-    if (err) {
-      res.status(401).json({message: 'Error', error: err});
-    } else {
-      res.json({message: 'Success', data: author});
-    }
-  })
-})
-
 app.put('/authors/:id', (req, res) => {
   let author = Author.findOne({_id: req.params.id}, (err, author) => {
     if (err) {
@@ -77,7 +77,7 @@ app.put('/authors/:id', (req, res) => {
       author.name = req.body.name;
       author.save( (error) => {
         if (error) {
-          res.json({messsage: 'Error', error: error});
+          res.status(401).json({messsage: 'Error', error: error});
         } else {
           res.json({message: 'Success', data: author});
         }

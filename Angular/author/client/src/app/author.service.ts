@@ -21,4 +21,8 @@ export class AuthorService {
   editAuthor(id, author) {
     return this._http.put(`/authors/${id}`, author);
   }
+
+  deleteAuthor(id) {
+    return this._http.delete(`/authors/${id}`);
+  }
 }

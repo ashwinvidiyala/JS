@@ -30,7 +30,6 @@ export class AuthorNewComponent implements OnInit {
         this._router.navigate(['/show']);
       },
       (err) => {
-        // console.log(err.json().error.message);
         this.error = err.json().error.message;
       }
     );

@@ -22,4 +22,8 @@ export class AuthorShowComponent implements OnInit {
       this.authors = data.json().data;
     })
   }
+
+  deleteAuthor(id) {
+    
+  }
 }
