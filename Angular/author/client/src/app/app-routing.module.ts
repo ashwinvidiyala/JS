@@ -7,9 +7,9 @@ import { AuthorEditComponent }  from './author/author-edit/author-edit.component
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/show' },
-  { path: 'show',    component: AuthorShowComponent },
-  { path: 'new',     component: AuthorNewComponent },
-  { path: 'edit/:id',    component: AuthorEditComponent }
+  { path: 'show',      component: AuthorShowComponent },
+  { path: 'new',       component: AuthorNewComponent },
+  { path: 'edit/:id',  component: AuthorEditComponent }
 ];
 
 @NgModule({

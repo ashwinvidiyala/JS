@@ -89,7 +89,7 @@ app.put('/authors/:id', (req, res) => {
 app.delete('/authors/:id', (req, res) => {
   Author.remove({_id: req.params.id}, (err) => {
     if (err) {
-      res.json({message: 'Error', error: err});
+      res.status(401).json({message: 'Error', error: err});
     } else {
       res.json({message: 'Successfully deleted'})
     }

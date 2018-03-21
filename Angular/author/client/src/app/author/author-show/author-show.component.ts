@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorService }     from '../../author.service';
+import { Router }            from '@angular/router';
 
 @Component({
   selector: 'app-author-show',
@@ -9,7 +10,10 @@ import { AuthorService }     from '../../author.service';
 export class AuthorShowComponent implements OnInit {
   authors;
 
-  constructor(private _authorService: AuthorService) { }
+  constructor(
+    private _authorService: AuthorService,
+    private _router: Router
+  ) { }
 
   ngOnInit() {
     this.getAuthors();
@@ -24,6 +28,9 @@ export class AuthorShowComponent implements OnInit {
   }
 
   deleteAuthor(id) {
-    
+    let observable = this._authorService.deleteAuthor(id);
+    observable.subscribe( (res) => {
+        this.getAuthors();
+    });
   }
 }

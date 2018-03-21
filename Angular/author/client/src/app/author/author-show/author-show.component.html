@@ -9,7 +9,9 @@
     <td>{{author.name}}</td>
     <td>
       <button class='btn btn-success' [routerLink]="['/edit', author._id]">Edit</button>
-      <button class='btn btn-success'>Delete</button>
+      <button class='btn btn-success' (click)='deleteAuthor(author._id)'>Delete</button>
     </td>
   </tr>
 </table>
+
+<p class='text-danger'>{{error}}</p>
