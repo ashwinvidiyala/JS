@@ -11,6 +11,9 @@ import { AuthorComponent } from './author/author.component';
 import { AuthorShowComponent } from './author/author-show/author-show.component';
 import { AuthorNewComponent } from './author/author-new/author-new.component';
 import { AuthorEditComponent } from './author/author-edit/author-edit.component';
+import { QuoteComponent } from './quote/quote.component';
+import { QuoteShowComponent } from './quote/quote-show/quote-show.component';
+import { QuoteNewComponent } from './quote/quote-new/quote-new.component';
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import { AuthorEditComponent } from './author/author-edit/author-edit.component'
     AuthorComponent,
     AuthorShowComponent,
     AuthorNewComponent,
-    AuthorEditComponent
+    AuthorEditComponent,
+    QuoteComponent,
+    QuoteShowComponent,
+    QuoteNewComponent,
   ],
   imports: [
     BrowserModule,
